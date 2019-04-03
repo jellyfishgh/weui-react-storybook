@@ -1,4 +1,4 @@
-import React, { isValidElement, Fragment } from 'react'
+import React, { Fragment } from 'react'
 
 import classnames from 'classnames'
 
@@ -13,17 +13,9 @@ const Cells = ({ title, tips, form, children }) => {
   if (tips || title)
     return (
       <Fragment>
-        {title && (
-          <div className="weui-cells__title">
-            {isValidElement(title) ? <title /> : title}
-          </div>
-        )}
+        {title && <div className="weui-cells__title">{title}</div>}
         {renderCells()}
-        {tips && (
-          <div className="weui-cells__tips">
-            {isValidElement(title) ? <title /> : title}
-          </div>
-        )}
+        {tips && <div className="weui-cells__tips">{tips}</div>}
       </Fragment>
     )
   return renderCells()

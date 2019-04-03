@@ -1,14 +1,16 @@
 import React from 'react'
 import classnames from 'classnames'
 
+import { renderEle } from '@/utils/ele'
+
 import './page.scss'
 
 const Page = ({ title, desc, spacing, bdStyle, children, ft }) => (
   <div className="page">
     {(title || desc) && (
       <div className="page__hd">
-        {title && <h1 className="page__title">{title}</h1>}
-        {desc && <p className="page__desc">{desc}</p>}
+        {title && <h1 className="page__title">{renderEle(title)}</h1>}
+        {desc && <p className="page__desc">{renderEle(desc)}</p>}
       </div>
     )}
     <div
@@ -17,7 +19,7 @@ const Page = ({ title, desc, spacing, bdStyle, children, ft }) => (
     >
       {children}
     </div>
-    {ft && <div className="page__ft">{ft}</div>}
+    {ft && <div className="page__ft">{renderEle(ft)}</div>}
   </div>
 )
 
