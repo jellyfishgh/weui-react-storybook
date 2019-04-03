@@ -1,9 +1,17 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import { BrowserRouter as Router } from 'react-router-dom'
 
 import App from './App'
-import * as serviceWorker from './serviceWorker'
+import { register } from './serviceWorker'
 
-ReactDOM.render(<App />, document.getElementById('root'))
+import '@/assets/style/weui/index.less'
+import '@/assets/style/index.scss'
 
-serviceWorker.register()
+ReactDOM.render(
+  <Router basename={process.env.REACT_APP_NAME}>
+    <App />
+  </Router>,
+  document.getElementById('root')
+)
+register()

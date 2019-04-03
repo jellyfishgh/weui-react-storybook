@@ -1,0 +1,29 @@
+.nav-item {
+  margin-bottom: 10px;
+  background-color: #fff;
+  cursor: pointer;
+  border-radius: 2px;
+  overflow: hidden;
+
+  .nav-item_label {
+    padding: 20px;
+    align-items: center;
+
+    &.active {
+      opacity: .4;
+    }
+
+    img {
+      width: 30px;
+      height: 30px;
+    }
+  }
+
+  .nav-item_list {
+    opacity: 1;
+
+    .weui-cells {
+      margin-top: 0;
+    }
+  }
+}

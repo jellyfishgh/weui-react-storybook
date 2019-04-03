@@ -1,0 +1,15 @@
+@import '../variables/fn.scss';
+
+html,
+body,
+#app,
+.app {
+  width: 100%;
+  height: 100%;
+  background-color: $bgColor;
+  -webkit-tap-highlight-color: transparent
+}
+
+.link {
+  color: $linkColor;
+}
