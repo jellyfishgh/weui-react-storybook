@@ -8,9 +8,8 @@ import Input from '@/components/WeUI/Input'
 const CellInput = ({
   cellClass,
   label,
-  value,
-  onChange,
-  onInput,
+  defaultValue,
+  onBlur,
   inputOptions,
   ft,
   err
@@ -18,7 +17,7 @@ const CellInput = ({
   <Cell
     className={classnames(cellClass, { 'weui-cell_warn': err })}
     hd={() => <label className="weui-label">{label}</label>}
-    bd={() => <Input {...{ value, onChange, onInput, ...inputOptions }} />}
+    bd={() => <Input {...{ defaultValue, onBlur, ...inputOptions }} />}
     ft={ft || (err ? () => <i className="weui-icon-warn" /> : null)}
   />
 )

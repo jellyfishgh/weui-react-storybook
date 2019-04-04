@@ -9,19 +9,17 @@ import Radios from '@/components/WeUI/Radios'
 import Checkboxes from '@/components/WeUI/Checkboxes'
 import CellInput from '@/components/WeUI/CellInput'
 import Switch from '@/components/WeUI/Switch'
+import Input from '@/components/WeUI/Input'
+import Textarea from '@/components/WeUI/Textarea'
 
 import { list, radioKey, checkboxKey, switchKey, inputList } from './config'
 
 const Inputs = () => {
   const [form, setForm] = useState({})
   const changeForm = (prop, value) => {
-    console.log(prop, value)
     const newForm = { ...form, [prop]: value }
+    console.log(newForm)
     setForm(newForm)
-  }
-  const inputForm = (prop, value) => {
-    console.log(prop, value)
-    form[prop] = value
   }
   return (
     <Page title="Inputs" desc="表单">
@@ -46,7 +44,7 @@ const Inputs = () => {
         {inputList.map(([label, prop, inputOptions, ft]) => (
           <CellInput
             key={prop}
-            value={form[prop]}
+            defaultValue={form[prop]}
             {...{
               label,
               inputOptions: {
@@ -60,7 +58,7 @@ const Inputs = () => {
               ft
             }}
             cellClass={classnames({ 'weui-cell_vcode': ft })}
-            onChange={e => inputForm(prop, e.target.value)}
+            onBlur={e => changeForm(prop, e.target.value)}
           />
         ))}
       </Cells>
@@ -71,7 +69,8 @@ const Inputs = () => {
           inputOptions={{
             placeholder: '请输入卡号'
           }}
-          onChange={e => inputForm('card', e.target.value)}
+          defaultValue={form.card}
+          onBlur={e => changeForm('card', e.target.value)}
         />
       </Cells>
       <Cells title="开关">
@@ -90,6 +89,29 @@ const Inputs = () => {
             <Switch
               value={form[switchKey]}
               onChange={v => changeForm(switchKey, v)}
+            />
+          )}
+        />
+      </Cells>
+      <Cells title="文本框">
+        <Cell
+          bd={() => (
+            <Input
+              placeholder="请输入文本"
+              defaultValue={form.text}
+              onBlur={e => changeForm('text', e.target.value)}
+            />
+          )}
+        />
+      </Cells>
+      <Cells title="文本域">
+        <Cell
+          bd={() => (
+            <Textarea
+              placeholder="请输入文本"
+              defaultValue={form.textarea}
+              maxLength={200}
+              onBlur={e => changeForm('textarea', e.target.value)}
             />
           )}
         />
