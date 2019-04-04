@@ -8,8 +8,9 @@ import Cell from '@/components/WeUI/Cell'
 import Radios from '@/components/WeUI/Radios'
 import Checkboxes from '@/components/WeUI/Checkboxes'
 import CellInput from '@/components/WeUI/CellInput'
+import Switch from '@/components/WeUI/Switch'
 
-import { list, radioKey, checkboxKey, inputList } from './config'
+import { list, radioKey, checkboxKey, switchKey, inputList } from './config'
 
 const Inputs = () => {
   const [form, setForm] = useState({})
@@ -71,6 +72,26 @@ const Inputs = () => {
             placeholder: '请输入卡号'
           }}
           onChange={e => inputForm('card', e.target.value)}
+        />
+      </Cells>
+      <Cells title="开关">
+        <Cell
+          bd="标准开关"
+          ft={() => (
+            <Switch
+              value={form[switchKey]}
+              onChange={v => changeForm(switchKey, v)}
+            />
+          )}
+        />
+        <Cell
+          bd="兼容 IE 和 Edge 的开关"
+          ft={() => (
+            <Switch
+              value={form[switchKey]}
+              onChange={v => changeForm(switchKey, v)}
+            />
+          )}
         />
       </Cells>
     </Page>
