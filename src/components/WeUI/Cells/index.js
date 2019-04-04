@@ -2,10 +2,14 @@ import React, { Fragment } from 'react'
 
 import classnames from 'classnames'
 
-const Cells = ({ title, tips, form, children }) => {
+const Cells = ({ title, tips, form, radio, checkbox, children }) => {
   const renderCells = () => (
     <div
-      className={classnames({ 'weui-cells': true, 'weui-cells_form': form })}
+      className={classnames('weui-cells', {
+        'weui-cells_form': form,
+        'weui-cells_radio': radio,
+        'weui-cells_checkbox': checkbox
+      })}
     >
       {children}
     </div>

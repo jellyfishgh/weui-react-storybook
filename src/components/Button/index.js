@@ -29,7 +29,7 @@ const Button = ({
     )}
     onClick={e => !loading && !disabled && onClick(e)}
   >
-    {loading && <i className="weui-loading" />}
+    {loading ? <i className="weui-loading" /> : null}
     {children}
   </button>
 )

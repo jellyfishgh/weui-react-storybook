@@ -1,11 +1,22 @@
-@import '~weui/src/style/base/variable/color';
+@import '~weui/src/style/base/variable/weui-button';
 
 button.weui-btn_plain-warn {
   border-width: 1px;
   background-color: transparent;
 }
 
-.weui-btn_plain-warn {
-  color: @weuiColorWarn;
-  border: 1px solid @weuiColorWarn;
+.weui-btn_plain-warn:not(.weui-btn_plain-disabled) {
+  color: @weuiBtnWarnBg;
+  border: 1px solid @weuiBtnWarnBg;
+
+  &:active {
+    color: fade(@weuiBtnWarnBg, 60%);
+    border-color: fade(@weuiBtnWarnBg, 60%);
+  }
+}
+
+.weui-btn_mini {
+  &+& {
+    margin-left: 10px;
+  }
 }
