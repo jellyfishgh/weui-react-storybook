@@ -1,23 +1,26 @@
 import React, { useState } from 'react'
 
+import classnames from 'classnames'
+
 import Page from '@/components/Page'
 import Cells from '@/components/WeUI/Cells'
 import Cell from '@/components/WeUI/Cell'
 import Radios from '@/components/WeUI/Radios'
 import Checkboxes from '@/components/WeUI/Checkboxes'
+import CellInput from '@/components/WeUI/CellInput'
 
-const list = new Array(3)
-  .fill(0)
-  .map((item, value) => ({ label: `label_${value}`, value }))
-
-const radioKey = 'radio'
-const checkboxKey = 'checkbox'
+import { list, radioKey, checkboxKey, inputList } from './config'
 
 const Inputs = () => {
   const [form, setForm] = useState({})
-  const changeForm = form => {
-    console.log(form)
-    setForm(form)
+  const changeForm = (prop, value) => {
+    console.log(prop, value)
+    const newForm = { ...form, [prop]: value }
+    setForm(newForm)
+  }
+  const inputForm = (prop, value) => {
+    console.log(prop, value)
+    form[prop] = value
   }
   return (
     <Page title="Inputs" desc="表单">
@@ -25,7 +28,7 @@ const Inputs = () => {
         <Radios
           list={list}
           value={form[radioKey]}
-          onChange={v => changeForm({ ...form, [radioKey]: v })}
+          onChange={v => changeForm(radioKey, v)}
         />
         <Cell className="weui-cell_link" bd="添加更多" />
       </Cells>
@@ -34,11 +37,42 @@ const Inputs = () => {
           prop={checkboxKey}
           list={list}
           value={form[checkboxKey]}
-          onChange={v => changeForm({ ...form, [checkboxKey]: v })}
+          onChange={v => changeForm(checkboxKey, v)}
         />
         <Cell className="weui-cell_link" bd="添加更多" />
       </Cells>
-      <Cells title="表单" tips="底部说明文字底部说明文字" />
+      <Cells title="表单" tips="底部说明文字底部说明文字">
+        {inputList.map(([label, prop, inputOptions, ft]) => (
+          <CellInput
+            key={prop}
+            value={form[prop]}
+            {...{
+              label,
+              inputOptions: {
+                ...inputOptions,
+                placeholder: ['datetime-local', 'date'].includes(
+                  inputOptions.type
+                )
+                  ? undefined
+                  : `请输入${label}`
+              },
+              ft
+            }}
+            cellClass={classnames({ 'weui-cell_vcode': ft })}
+            onChange={e => inputForm(prop, e.target.value)}
+          />
+        ))}
+      </Cells>
+      <Cells title="表单报错">
+        <CellInput
+          err
+          label="卡号"
+          inputOptions={{
+            placeholder: '请输入卡号'
+          }}
+          onChange={e => inputForm('card', e.target.value)}
+        />
+      </Cells>
     </Page>
   )
 }
