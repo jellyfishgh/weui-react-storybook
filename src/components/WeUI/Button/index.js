@@ -27,7 +27,7 @@ const Button = ({
         'weui-btn_mini': mini
       }
     )}
-    onClick={e => !loading && !disabled && onClick(e)}
+    onClick={e => !loading && !disabled && onClick && onClick(e)}
   >
     {loading ? <i className="weui-loading" /> : null}
     {children}

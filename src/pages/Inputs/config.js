@@ -7,6 +7,9 @@ export const list = new Array(3)
 export const radioKey = 'radio'
 export const checkboxKey = 'checkbox'
 export const switchKey = 'switch'
+export const areaCodeKey = 'areaCode'
+export const idType = 'idType'
+export const country = 'country'
 
 export const inputList = [
   [

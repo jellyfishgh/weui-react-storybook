@@ -1,8 +1,9 @@
-import React, { useState } from 'react'
+import React, { Fragment, useState } from 'react'
 
 import classnames from 'classnames'
 
 import Page from '@/components/Page'
+import PageFt from '@/components/PageFt'
 import Cells from '@/components/WeUI/Cells'
 import Cell from '@/components/WeUI/Cell'
 import Radios from '@/components/WeUI/Radios'
@@ -11,8 +12,21 @@ import CellInput from '@/components/WeUI/CellInput'
 import Switch from '@/components/WeUI/Switch'
 import Input from '@/components/WeUI/Input'
 import Textarea from '@/components/WeUI/Textarea'
+import Select from '@/components/WeUI/Select'
+import AgreeBox from '@/components/WeUI/AgreeBox'
+import BtnArea from '@/components/WeUI/BtnArea'
+import Button from '@/components/WeUI/Button'
 
-import { list, radioKey, checkboxKey, switchKey, inputList } from './config'
+import {
+  list,
+  radioKey,
+  checkboxKey,
+  switchKey,
+  areaCodeKey,
+  idType,
+  country,
+  inputList
+} from './config'
 
 const Inputs = () => {
   const [form, setForm] = useState({})
@@ -22,7 +36,7 @@ const Inputs = () => {
     setForm(newForm)
   }
   return (
-    <Page title="Inputs" desc="表单">
+    <Page title="Inputs" ft={PageFt} desc="表单">
       <Cells title="单选列表项" radio>
         <Radios
           list={list}
@@ -116,6 +130,49 @@ const Inputs = () => {
           )}
         />
       </Cells>
+      <Cells title="选择">
+        <Cell
+          className="weui-cell_select weui-cell_select-before"
+          hd={() => (
+            <Select
+              list={list}
+              value={form[areaCodeKey]}
+              onChange={v => changeForm(areaCodeKey, v)}
+            />
+          )}
+          bd={() => <Input placeholder="请输入号码" />}
+        />
+      </Cells>
+      <Cells title="选择">
+        {[idType, country].map(prop => (
+          <Cell
+            key={prop}
+            className="weui-cell_select"
+            bd={() => (
+              <Select
+                list={list}
+                value={form[prop]}
+                onChange={v => changeForm(prop, v)}
+              />
+            )}
+          />
+        ))}
+      </Cells>
+      <AgreeBox
+        value={form.agree}
+        onChange={v => changeForm('agree', v)}
+        txt={() => (
+          <Fragment>
+            阅读并同意
+            <a href="void(0);" onClick={e => e.preventDefault()}>
+              《相关条款》
+            </a>
+          </Fragment>
+        )}
+      />
+      <BtnArea>
+        <Button type="primary">确定</Button>
+      </BtnArea>
     </Page>
   )
 }

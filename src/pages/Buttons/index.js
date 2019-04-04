@@ -1,8 +1,8 @@
 import React from 'react'
 
 import Page from '@/components/Page'
-import Button from '@/components/Button'
 import PageFt from '@/components/PageFt'
+import Button from '@/components/WeUI/Button'
 
 const Buttons = () => {
   return (
