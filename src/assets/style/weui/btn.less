@@ -1,4 +1,5 @@
 @import '~weui/src/style/base/variable/weui-button';
+@import '~weui/src/style/base/mixin/setOnepx';
 
 button.weui-btn_plain-warn {
   border-width: 1px;
@@ -19,4 +20,16 @@ button.weui-btn_plain-warn {
   &+& {
     margin-left: 10px;
   }
+}
+
+.weui-swiped-btn {
+  &+& {
+    &:before {
+      .setLeftLine();
+    }
+  }
+}
+
+.weui-swiped-btn_primary {
+  background-color: @weuiBtnPrimaryBg;
 }
