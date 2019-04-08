@@ -35,9 +35,27 @@ const List = () => (
         swiped
       />
     </Cells>
-    <Cells />
-    <Cells />
-    <Cells />
+    <Cells title="带图标、说明的列表项">
+      <Cell
+        hd={() => <img src={require('./icon.png')} alt="icon" />}
+        bd="标题文字"
+        ft="说明文字"
+      />
+    </Cells>
+    <Cells title="带跳转的列表项">
+      <Cell access bd="cell standard" />
+    </Cells>
+    <Cells title="带说明、跳转的列表项">
+      <Cell access bd="cell standard" ft="说明文字" />
+    </Cells>
+    <Cells title="带图标、说明、跳转的列表项">
+      <Cell
+        hd={() => <img src={require('./icon.png')} alt="icon" />}
+        access
+        bd="cell standard"
+        ft="说明文字"
+      />
+    </Cells>
   </Page>
 )
 
