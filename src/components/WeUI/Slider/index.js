@@ -2,33 +2,38 @@ import React, { useState, createRef } from 'react'
 import { getEvent } from '@/utils/ele'
 
 const Slider = ({ value, verti, box, onChange, start = 0, end = 100 }) => {
-  if (!(value > start && value < end)) {
+  if (!(value >= start && value <= end)) {
     throw new Error('value must be between start and end')
   }
   const sliderRef = createRef()
-  const getPercent = v => Number.parseInt(((v - start) / (end - start)) * 100)
-  const [percent, setPercent] = useState(getPercent(value))
+  const getPercent = (s, v, e) => Number.parseInt(((v - s) / (e - s)) * 100)
+  const percent = getPercent(start, value, end)
   const [isMoving, setIsMoving] = useState(false)
   const [startCoord, setStartCoord] = useState(0)
   const getCoord = e => {
     const { clientX, clientY } = getEvent(e)
     return verti ? clientY : clientX
   }
+  const getFullGap = () =>
+    verti ? sliderRef.current.offsetHeight : sliderRef.current.offsetWidth
   const onMouseDown = e => {
     setIsMoving(true)
-    setStartCoord(getCoord(e))
+    const startCoord =
+      getCoord(e) - Number.parseInt((getFullGap() * percent) / 100)
+    setStartCoord(startCoord)
   }
   const onMouseMove = e => {
     if (isMoving) {
       const coord = getCoord(e)
-      if (coord >= startCoord && coord <= startCoord + sliderRef.offsetWidth) {
-        setPercent(getPercent(coord))
+      const fullGap = getFullGap()
+      if (coord >= startCoord && coord <= startCoord + fullGap) {
+        const percent = getPercent(startCoord, coord, startCoord + fullGap)
+        onChange(Number.parseInt(start + ((end - start) * percent) / 100))
       }
     }
   }
   const onMouseUp = () => {
     setIsMoving(false)
-    // onChange(Number.parseInt(start * (1 + percent / 100)))
   }
   let sliderStyle = {}
   let innerStyle = {}
