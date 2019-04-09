@@ -1,11 +1,12 @@
 import React from 'react'
 import classnames from 'classnames'
 
+import PageFt from '@/components/PageFt'
 import { renderEle } from '@/utils/ele'
 
 import './page.scss'
 
-const Page = ({ title, desc, spacing, bdStyle, children, ft }) => (
+const Page = ({ title, desc, spacing, bdStyle, children, ft = PageFt }) => (
   <div className="page">
     {(title || desc) && (
       <div className="page__hd">

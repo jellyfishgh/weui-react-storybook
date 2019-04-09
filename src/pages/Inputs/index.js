@@ -3,7 +3,6 @@ import React, { Fragment, useState } from 'react'
 import classnames from 'classnames'
 
 import Page from '@/components/Page'
-import PageFt from '@/components/PageFt'
 import Cells from '@/components/WeUI/Cells'
 import Cell from '@/components/WeUI/Cell'
 import Radios from '@/components/WeUI/Radios'
@@ -36,7 +35,7 @@ const Inputs = () => {
     setForm(newForm)
   }
   return (
-    <Page title="Inputs" ft={PageFt} desc="表单">
+    <Page title="Inputs" desc="表单">
       <Cells title="单选列表项" radio>
         <Radios
           list={list}
