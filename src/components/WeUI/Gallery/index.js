@@ -11,11 +11,9 @@ const Gallery = ({ imgs, index, onDelete, onHide, onActive, style }) => {
   }
   const imgRef = createRef()
   const onMouseDown = e => {
-    e.stopPropagation()
     setXY(getCoord(e))
   }
   const onMouseUp = e => {
-    e.stopPropagation()
     const { x, y } = getCoord(e)
     if (Math.sqrt(Math.pow(x - xy.x, 2) + Math.pow(y - xy.y, 2)) < 3) {
       // 防止隐藏后点击到了后面的图片
@@ -33,11 +31,7 @@ const Gallery = ({ imgs, index, onDelete, onHide, onActive, style }) => {
     }
   }
   return (
-    <div
-      className="weui-gallery"
-      style={style}
-      onTouchStart={e => e.stopPropagation()}
-    >
+    <div className="weui-gallery" style={style}>
       <span
         ref={imgRef}
         onMouseDown={onMouseDown}

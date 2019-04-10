@@ -3,7 +3,19 @@ import classnames from 'classnames'
 
 import { getEvent, renderEle } from '@/utils/ele'
 
-const Cell = ({ hd, bd, ft, access, swiped, onClick, className, style }) => {
+const Cell = ({
+  hd,
+  hdClass,
+  bd,
+  bdClass,
+  ft,
+  ftClass,
+  access,
+  swiped,
+  onClick,
+  className,
+  style
+}) => {
   const [isMoving, setIsMoving] = useState(false)
   const [startX, setStartX] = useState(0)
   const [endX, setEndX] = useState(0)
@@ -50,10 +62,14 @@ const Cell = ({ hd, bd, ft, access, swiped, onClick, className, style }) => {
       onMouseUp={onMouseUp}
       onTouchEnd={onMouseUp}
     >
-      {hd && <div className="weui-cell__hd">{renderEle(hd)}</div>}
+      {hd && (
+        <div className={classnames('weui-cell__hd', hdClass)}>
+          {renderEle(hd)}
+        </div>
+      )}
       {bd && (
         <div
-          className="weui-cell__bd"
+          className={classnames('weui-cell__bd', bdClass)}
           style={
             swiped && startX > endX
               ? { transform: `translateX(${endX - startX}px)` }
@@ -64,7 +80,10 @@ const Cell = ({ hd, bd, ft, access, swiped, onClick, className, style }) => {
         </div>
       )}
       {(ft || access) && (
-        <div className="weui-cell__ft" ref={ref => (ftRef = ref)}>
+        <div
+          className={classnames('weui-cell__ft', ftClass)}
+          ref={ref => (ftRef = ref)}
+        >
           {renderEle(
             ft,
             swiped

@@ -9,3 +9,35 @@ body,
   background-color: $bgColor;
   -webkit-tap-highlight-color: transparent
 }
+
+.font-0 {
+  font-size: 0;
+}
+
+.block {
+  display: block;
+}
+
+.inline {
+  display: inline;
+}
+
+.inline-block {
+  display: inline-block;
+}
+
+.absolute {
+  position: absolute;
+}
+
+.relative {
+  position: relative;
+}
+
+.fixed {
+  position: fixed;
+}
+
+.v-center {
+  vertical-align: middle;
+}
