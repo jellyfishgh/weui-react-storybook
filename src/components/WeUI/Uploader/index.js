@@ -24,7 +24,11 @@ const PureUploader = ({
       <ul className="weui-uploader__files">
         {imgs.map(({ pic, content, error }, key) => (
           <li
-            onClick={() => onShowImg(key)}
+            onClick={({ target, currentTarget }) => {
+              if (target === currentTarget) {
+                onShowImg(key)
+              }
+            }}
             key={key}
             className="weui-uploader__file"
             style={{ backgroundImage: `url(${pic})` }}
@@ -45,6 +49,7 @@ const PureUploader = ({
           multiple
           onChange={e => {
             if (e.target.files.length + imgs.length > limit) {
+              // todo 改用 toast
               window.alert(`最多只能上传${limit}张图片`)
               return
             }
@@ -72,15 +77,16 @@ const Uploader = props => {
         <Gallery
           style={{ display: 'block' }}
           imgs={imgs.map(({ pic }) => pic)}
-          defaultIndex={index}
+          index={index}
           onDelete={delIndex => {
             const newImgs = imgs.filter((img, i) => i !== delIndex)
             setImgs(newImgs)
-            if (newImgs.length === 0) {
+            if (!newImgs[index]) {
               setIndex(-1)
             }
           }}
           onHide={() => setIndex(-1)}
+          onActive={setIndex}
         />
       )}
       <Cells form>
