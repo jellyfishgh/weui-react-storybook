@@ -1,26 +1,26 @@
-import React, { useState } from 'react'
+import React from 'react'
+import { observer } from 'mobx-react'
 
 import Page from '@/components/Page'
 import NavItem from '@/components/NavItem'
 import Logo from '@/components/Logo'
 import PageFt from '@/components/PageFt'
 import { desc, items } from './config'
+import store, { NO_ACTIVE_INDEX } from './store'
 
-const NO_ACTIVE_INDEX = -1
-const DEFAULT_ACTIVE_INDEX = NO_ACTIVE_INDEX
-
-const Home = () => {
-  const [activeIndex, setActiveIndex] = useState(DEFAULT_ACTIVE_INDEX)
+const Home = observer(({ store }) => {
   return (
     <Page title={Logo} desc={desc} ft={PageFt} spacing>
       <ul>
         {items.map((item, index) => (
           <NavItem
             {...item}
-            active={index === activeIndex}
-            setActiveIndex={index =>
-              setActiveIndex(index === activeIndex ? NO_ACTIVE_INDEX : index)
-            }
+            active={index === store.activeIndex}
+            setActiveIndex={index => {
+              const result =
+                index === store.activeIndex ? NO_ACTIVE_INDEX : index
+              store.setActiveIndex(result)
+            }}
             index={index}
             key={index}
           />
@@ -28,6 +28,6 @@ const Home = () => {
       </ul>
     </Page>
   )
-}
+})
 
-export default Home
+export default () => <Home store={store} />
