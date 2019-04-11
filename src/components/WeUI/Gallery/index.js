@@ -1,9 +1,17 @@
 import React, { useState, createRef } from 'react'
+import classnames from 'classnames'
 
 import { getEvent } from '@/utils/ele'
 import { DeleteIcon } from '@/components/WeUI/Icons/icons'
 
-const Gallery = ({ imgs, index, onDelete, onHide, onActive, style }) => {
+const Gallery = ({
+  imgs,
+  index = 0,
+  onDelete,
+  onHide,
+  onActive,
+  className
+}) => {
   const [xy, setXY] = useState({ x: 0, y: 0 })
   const getCoord = e => {
     const { clientX, clientY } = getEvent(e)
@@ -31,7 +39,7 @@ const Gallery = ({ imgs, index, onDelete, onHide, onActive, style }) => {
     }
   }
   return (
-    <div className="weui-gallery" style={style}>
+    <div className={classnames('weui-gallery', className)}>
       <span
         ref={imgRef}
         onMouseDown={onMouseDown}

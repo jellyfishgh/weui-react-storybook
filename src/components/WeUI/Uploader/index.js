@@ -75,7 +75,7 @@ const Uploader = props => {
     <Fragment>
       {imgs[index] && (
         <Gallery
-          style={{ display: 'block' }}
+          className="block"
           imgs={imgs.map(({ pic }) => pic)}
           index={index}
           onDelete={delIndex => {
