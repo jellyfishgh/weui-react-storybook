@@ -6,7 +6,7 @@ import Slider from '@/components/WeUI/Slider'
 const SliderPage = () => {
   const [value, setValue] = useState(20)
   return (
-    <Page title="slider" desc={`滑块(${value})`} spacing>
+    <Page title="slider" desc={`滑块(${value})`} spacing ftbt>
       <Slider value={value} onChange={setValue} />
       <Slider value={value} onChange={setValue} box />
       <Slider value={value} onChange={setValue} start={0} end={100} />

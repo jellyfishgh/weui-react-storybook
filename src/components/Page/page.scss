@@ -1,6 +1,10 @@
 .page {
   -webkit-overflow-scrolling: touch;
 
+  &.ftbt {
+    padding-bottom: 75px;
+  }
+
   .page__hd {
     padding: 40px;
 

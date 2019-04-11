@@ -26,18 +26,10 @@ body,
   display: inline-block;
 }
 
-.absolute {
-  position: absolute;
-}
-
-.relative {
-  position: relative;
-}
-
-.fixed {
-  position: fixed;
-}
-
 .v-center {
   vertical-align: middle;
+}
+
+.bg-page {
+  background-color: $bgColor;
 }

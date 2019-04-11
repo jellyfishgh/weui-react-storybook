@@ -6,7 +6,7 @@ import Cell from '@/components/WeUI/Cell'
 import Badge from '@/components/WeUI/Badge'
 
 const BadgePage = () => (
-  <Page title="Badge" desc="徽章">
+  <Page title="Badge" desc="徽章" ftbt>
     <Cells title="新消息提示跟摘要信息后，统一在列表右侧">
       <Cell
         access

@@ -7,6 +7,7 @@ import Uploader from '@/components/WeUI/Uploader'
 const UploaderPage = () => (
   <Page
     title="Uploader"
+    ftbt
     desc={() => (
       <Fragment>
         上传组件，一般配合

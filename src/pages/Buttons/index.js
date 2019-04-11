@@ -1,12 +1,11 @@
 import React from 'react'
 
 import Page from '@/components/Page'
-import PageFt from '@/components/PageFt'
 import Button from '@/components/WeUI/Button'
 
 const Buttons = () => {
   return (
-    <Page title="Button" desc="按钮" spacing ft={PageFt}>
+    <Page title="Button" desc="按钮" spacing>
       {[1, 0].map(disabled =>
         [1, 0].map(mini =>
           [1, 0].map(loading =>

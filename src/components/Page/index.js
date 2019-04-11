@@ -6,8 +6,20 @@ import { renderEle } from '@/utils/ele'
 
 import './page.scss'
 
-const Page = ({ title, desc, spacing, bdStyle, children, ft = PageFt }) => (
-  <div className="page">
+const Page = ({
+  title,
+  desc,
+  spacing,
+  bdStyle,
+  children,
+  ft = PageFt,
+  ftbt
+}) => (
+  <div
+    className={classnames('page', {
+      ftbt
+    })}
+  >
     {(title || desc) && (
       <div className="page__hd">
         {title && <h1 className="page__title">{renderEle(title)}</h1>}
@@ -20,7 +32,15 @@ const Page = ({ title, desc, spacing, bdStyle, children, ft = PageFt }) => (
     >
       {children}
     </div>
-    {ft && <div className="page__ft">{renderEle(ft)}</div>}
+    {ft && (
+      <div
+        className={classnames('page__ft', {
+          'fixed bt bg-page': ftbt
+        })}
+      >
+        {renderEle(ft)}
+      </div>
+    )}
   </div>
 )
 
