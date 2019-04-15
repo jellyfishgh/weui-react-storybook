@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react'
 
 import Page from '@/components/Page'
+import Image from '@/components/Image'
 import Cells from '@/components/WeUI/Cells'
 import Cell from '@/components/WeUI/Cell'
 import SwipedButton from '@/components/WeUI/SwipedButton'
@@ -36,11 +37,7 @@ const List = () => (
       />
     </Cells>
     <Cells title="带图标、说明的列表项">
-      <Cell
-        hd={() => <img src={require('./icon.png')} alt="icon" />}
-        bd="标题文字"
-        ft="说明文字"
-      />
+      <Cell hd={() => <Image name="icon.png" />} bd="标题文字" ft="说明文字" />
     </Cells>
     <Cells title="带跳转的列表项">
       <Cell access bd="cell standard" />
@@ -50,7 +47,7 @@ const List = () => (
     </Cells>
     <Cells title="带图标、说明、跳转的列表项">
       <Cell
-        hd={() => <img src={require('./icon.png')} alt="icon" />}
+        hd={() => <Image name="icon.png" />}
         access
         bd="cell standard"
         ft="说明文字"

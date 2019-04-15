@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import classnames from 'classnames'
 
-import { getEvent, renderEle } from '@/utils/ele'
+import { getEvent, renderEle, getTag } from '@/utils/ele'
 
 const Cell = ({
   hd,
@@ -47,8 +47,9 @@ const Cell = ({
       setIsMoving(false)
     }
   }
+  const Tag = getTag(access)
   return (
-    <div
+    <Tag
       className={classnames('weui-cell', className, {
         'weui-cell_access': access,
         'weui-cell_swiped': swiped
@@ -98,7 +99,7 @@ const Cell = ({
           )}
         </div>
       )}
-    </div>
+    </Tag>
   )
 }
 

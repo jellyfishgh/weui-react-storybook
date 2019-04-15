@@ -1,25 +1,18 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 
 import ALink from '@/components/ALink'
 
-const renderLink = link => {
-  if (link instanceof Array) {
-    return (
-      <Fragment>
-        {link.map((label, index) => (
-          <ALink key={index} className="weui-footer__link">
-            {label}
-          </ALink>
-        ))}
-      </Fragment>
-    )
-  }
-  return <ALink className="weui-footer__link">{link}</ALink>
-}
+import { renderList } from '@/utils/ele'
 
 const Footer = ({ txt, link }) => (
   <div className="weui-footer">
-    {link && <p className="weui-footer__links">{renderLink(link)}</p>}
+    {link && (
+      <p className="weui-footer__links">
+        {renderList(link, ({ children }) => (
+          <ALink className="weui-footer__link">{children}</ALink>
+        ))}
+      </p>
+    )}
     {txt && <p className="weui-footer__text">{txt}</p>}
   </div>
 )
