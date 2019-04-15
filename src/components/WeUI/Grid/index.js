@@ -1,20 +1,14 @@
 import React from 'react'
 
+import ALink from '@/components/ALink'
+
 import { renderEle } from '@/utils/ele'
 
 const GridItem = ({ icon, label, width, onClick }) => (
-  <a
-    href="void(0);"
-    className="weui-grid"
-    onClick={e => {
-      e.preventDefault()
-      onClick && onClick()
-    }}
-    style={{ width }}
-  >
+  <ALink className="weui-grid" onClick={onClick} style={{ width }}>
     <div className="weui-grid__icon">{renderEle(icon)}</div>
     <p className="weui-grid__label">{renderEle(label)}</p>
-  </a>
+  </ALink>
 )
 
 const Grid = ({ items, onClick, count = 3 }) => (

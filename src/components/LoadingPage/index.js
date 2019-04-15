@@ -1,7 +1,7 @@
 import React from 'react'
 import classnames from 'classnames'
 
-const PageLoading = ({ error }) => (
+const LoadingPage = ({ error }) => (
   <div
     className={classnames([
       'txt-center',
@@ -13,4 +13,4 @@ const PageLoading = ({ error }) => (
   </div>
 )
 
-export default PageLoading
+export default LoadingPage

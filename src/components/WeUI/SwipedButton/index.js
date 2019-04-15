@@ -1,18 +1,16 @@
 import React from 'react'
 import classnames from 'classnames'
 
+import ALink from '@/components/ALink'
+
 const SwipedButton = ({ children, onClick, style, type = 'warn' }) => (
-  <a
-    href="void(0);"
+  <ALink
     style={style}
     className={classnames('weui-swiped-btn', `weui-swiped-btn_${type}`)}
-    onClick={e => {
-      e.preventDefault()
-      onClick && onClick()
-    }}
+    onClick={onClick}
   >
     {children}
-  </a>
+  </ALink>
 )
 
 export default SwipedButton

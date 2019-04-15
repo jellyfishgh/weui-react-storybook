@@ -1,8 +1,10 @@
 import React, { useState, createRef } from 'react'
 import classnames from 'classnames'
 
-import { getEvent } from '@/utils/ele'
+import ALink from '@/components/ALink'
 import { Delete } from '@/components/WeUI/Icons/icons'
+
+import { getEvent } from '@/utils/ele'
 
 const Gallery = ({
   imgs,
@@ -51,16 +53,14 @@ const Gallery = ({
       />
       {onDelete && (
         <div className="weui-gallery__opr">
-          <a
+          <ALink
             className="weui-gallery__del"
-            href="void(0);"
-            onClick={e => {
-              e.preventDefault()
+            onClick={() => {
               onDelete(index)
             }}
           >
             <Delete className="weui-icon_gallery-delete" />
-          </a>
+          </ALink>
         </div>
       )}
     </div>

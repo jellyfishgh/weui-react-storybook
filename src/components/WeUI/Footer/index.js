@@ -1,26 +1,20 @@
 import React, { Fragment } from 'react'
 
-const OneLink = ({ label }) => (
-  <a
-    href="void(0);"
-    className="weui-footer__link"
-    onClick={e => e.preventDefault()}
-  >
-    {label}
-  </a>
-)
+import ALink from '@/components/ALink'
 
 const renderLink = link => {
   if (link instanceof Array) {
     return (
       <Fragment>
         {link.map((label, index) => (
-          <OneLink label={label} key={index} />
+          <ALink key={index} className="weui-footer__link">
+            {label}
+          </ALink>
         ))}
       </Fragment>
     )
   }
-  return <OneLink label={link} />
+  return <ALink className="weui-footer__link">{link}</ALink>
 }
 
 const Footer = ({ txt, link }) => (

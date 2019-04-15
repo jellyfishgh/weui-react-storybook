@@ -3,6 +3,7 @@ import React, { Fragment, useState } from 'react'
 import classnames from 'classnames'
 
 import Page from '@/components/Page'
+import ALink from '@/components/ALink'
 import Cells from '@/components/WeUI/Cells'
 import Cell from '@/components/WeUI/Cell'
 import Radios from '@/components/WeUI/Radios'
@@ -163,9 +164,7 @@ const Inputs = () => {
         txt={() => (
           <Fragment>
             阅读并同意
-            <a href="void(0);" onClick={e => e.preventDefault()}>
-              《相关条款》
-            </a>
+            <ALink>《相关条款》</ALink>
           </Fragment>
         )}
       />
