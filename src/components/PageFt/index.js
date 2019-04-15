@@ -1,11 +1,13 @@
-import React, { Component } from 'react'
+import React, { Fragment } from 'react'
 
-class PageFt extends Component {
-  render() {
-    return (
-      <img src={require('@/assets/imgs/icon_footer.png')} alt="icon footer" />
-    )
-  }
-}
+import Image from '@/components/Image'
+import { version } from '../../../package.json'
+
+const PageFt = () => (
+  <Fragment>
+    <Image name="icon_footer.png" />
+    <h6 className="txt-info txt-center">{version}</h6>
+  </Fragment>
+)
 
 export default PageFt
