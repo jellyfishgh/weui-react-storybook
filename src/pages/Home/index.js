@@ -10,7 +10,7 @@ import store, { NO_ACTIVE_INDEX } from './store'
 
 const Home = observer(({ store }) => {
   return (
-    <Page title={Logo} desc={desc} ft={PageFt} spacing>
+    <Page title={Logo} desc={desc} ft={PageFt} ftbt spacing>
       <ul>
         {items.map((item, index) => (
           <NavItem

@@ -2,7 +2,7 @@ import React, { useState, createRef } from 'react'
 import classnames from 'classnames'
 
 import { getEvent } from '@/utils/ele'
-import { DeleteIcon } from '@/components/WeUI/Icons/icons'
+import { Delete } from '@/components/WeUI/Icons/icons'
 
 const Gallery = ({
   imgs,
@@ -59,7 +59,7 @@ const Gallery = ({
               onDelete(index)
             }}
           >
-            <DeleteIcon className="weui-icon_gallery-delete" />
+            <Delete className="weui-icon_gallery-delete" />
           </a>
         </div>
       )}

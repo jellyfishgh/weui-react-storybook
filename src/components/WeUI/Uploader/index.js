@@ -4,7 +4,7 @@ import Gallery from '@/components/WeUI/Gallery'
 import Cells from '@/components/WeUI/Cells'
 import Cell from '@/components/WeUI/Cell'
 // import Toast from '@/components/WeUI/Toast'
-import { WarnIcon } from '@/components/WeUI/Icons/icons'
+import { Warn } from '@/components/WeUI/Icons/icons'
 
 const PureUploader = ({
   title = '图片上传',
@@ -35,7 +35,7 @@ const PureUploader = ({
           >
             {content && (
               <div className="weui-uploader__file-content">
-                {error ? <WarnIcon /> : content}
+                {error ? <Warn /> : content}
               </div>
             )}
           </li>

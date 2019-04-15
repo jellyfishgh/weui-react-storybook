@@ -33,3 +33,12 @@ body,
 .bg-page {
   background-color: $bgColor;
 }
+
+.bg-white {
+  background-color: #fff;
+}
+
+.scroll {
+  -webkit-overflow-scrolling: touch;
+  overflow: auto;
+}

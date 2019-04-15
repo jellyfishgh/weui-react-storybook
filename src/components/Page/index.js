@@ -11,14 +11,18 @@ const Page = ({
   desc,
   spacing,
   bdStyle,
+  bdClass,
   children,
   ft = PageFt,
-  ftbt
+  ftbt,
+  className,
+  style
 }) => (
   <div
-    className={classnames('page', {
+    className={classnames('page scroll', className, {
       ftbt
     })}
+    style={style}
   >
     {(title || desc) && (
       <div className="page__hd">
@@ -27,7 +31,7 @@ const Page = ({
       </div>
     )}
     <div
-      className={classnames({ page__bd: true, page__bd_spacing: spacing })}
+      className={classnames('page__bd', { page__bd_spacing: spacing }, bdClass)}
       style={bdStyle}
     >
       {children}
