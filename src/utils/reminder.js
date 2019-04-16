@@ -2,6 +2,7 @@ import { createEleOnPage } from '@/utils/ele'
 
 import Actionsheet from '@/components/WeUI/Actionsheet'
 import Dialog from '@/components/WeUI/Dialog'
+import Toast from '@/components/WeUI/Toast'
 
 export const actionsheet = ({ items, title, android, cancelTxt }) =>
   new Promise((resolve, reject) => {
@@ -54,4 +55,20 @@ export const confirm = options => {
       }
     })
   })
+}
+
+export const loading = (msg = '加载中...') => {
+  createEleOnPage(Toast, {
+    msg,
+    icon: 'loading'
+  })
+}
+
+export const stopLoading = stopLoading => () => {}
+
+export const toast = options => {
+  if (typeof options === 'string') {
+    options = { msg: options }
+  }
+  createEleOnPage(Toast, options)
 }

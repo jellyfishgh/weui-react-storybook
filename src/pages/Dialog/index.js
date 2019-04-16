@@ -33,7 +33,7 @@ const title =
 const alertLongTxt = () =>
   alert({
     title,
-    msg: step(5)
+    msg: step(10)
       .map(() => title)
       .join('\n'),
     confirmTxt: 'alert'

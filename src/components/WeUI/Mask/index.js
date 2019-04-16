@@ -1,9 +1,9 @@
 import React from 'react'
 import classnames from 'classnames'
 
-const Mask = ({ hide, android, onClick, children }) => (
+const Mask = ({ transparent, hide, android, onClick, children }) => (
   <div
-    className={classnames('weui-mask', {
+    className={classnames(transparent ? 'weui-mask_transparent' : 'weui-mask', {
       hide,
       'weui-skin_android': android
     })}
