@@ -1,4 +1,5 @@
 import React from 'react'
+import { Helmet } from 'react-helmet'
 import classnames from 'classnames'
 
 import PageFt from '@/components/PageFt'
@@ -19,7 +20,8 @@ const Page = ({
   ft = PageFt,
   ftbt,
   className,
-  style
+  style,
+  hd = true
 }) => (
   <div
     id={PAGE_ID}
@@ -28,7 +30,12 @@ const Page = ({
     })}
     style={style}
   >
-    {(title || desc) && (
+    {typeof title === 'string' && (
+      <Helmet>
+        <title>{title}</title>
+      </Helmet>
+    )}
+    {(title || desc) && hd && (
       <div className="page__hd">
         {title && <h1 className="page__title">{renderEle(title)}</h1>}
         {desc && <p className="page__desc">{renderEle(desc)}</p>}

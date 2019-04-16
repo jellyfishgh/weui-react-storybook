@@ -53,12 +53,17 @@ export const createEleOnPage = (Ele, props) => {
   }
 }
 
-export const renderDlgBtns = (btns, className, onClick) => {
+export const renderDlgBtns = (
+  btns,
+  className,
+  onClick,
+  isPrimary = (index, btns) => btns.length - 1 === index
+) => {
   if (typeof btns === 'string') btns = [btns]
   btns = btns.map((children, index) => ({
     className: classnames(
       className,
-      `${className}_${btns.length - 1 === index ? 'primary' : 'default'}`
+      `${className}_${isPrimary(index, btns) ? 'primary' : 'default'}`
     ),
     children,
     onClick: () => onClick && onClick(index)

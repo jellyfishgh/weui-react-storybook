@@ -3,8 +3,9 @@ import React, { useState, Fragment } from 'react'
 import Gallery from '@/components/WeUI/Gallery'
 import Cells from '@/components/WeUI/Cells'
 import Cell from '@/components/WeUI/Cell'
-// import Toast from '@/components/WeUI/Toast'
 import { Warn } from '@/components/WeUI/Icon/icons'
+
+import { alert } from '@/utils/reminder'
 
 const PureUploader = ({
   title = '图片上传',
@@ -49,8 +50,7 @@ const PureUploader = ({
           multiple
           onChange={e => {
             if (e.target.files.length + imgs.length > limit) {
-              // todo 改用 toast
-              window.alert(`最多只能上传${limit}张图片`)
+              alert(`最多只能上传${limit}张图片`)
               return
             }
             const URL = window.URL || window.webkitURL
