@@ -2,7 +2,7 @@ import React, { useState, createRef } from 'react'
 import classnames from 'classnames'
 
 import ALink from '@/components/ALink'
-import { Delete } from '@/components/WeUI/Icons/icons'
+import { Delete } from '@/components/WeUI/Icon/icons'
 
 import { getEvent } from '@/utils/ele'
 

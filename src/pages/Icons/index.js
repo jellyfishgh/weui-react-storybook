@@ -16,7 +16,7 @@ import {
   InfoCircle,
   Cancel,
   Search
-} from '@/components/WeUI/Icons/icons'
+} from '@/components/WeUI/Icon/icons'
 
 const IconsPage = () => (
   <Page title="Icons" desc="图标" spacing ftbt bdClass="p-r-xxxl">

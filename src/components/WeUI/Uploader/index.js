@@ -4,7 +4,7 @@ import Gallery from '@/components/WeUI/Gallery'
 import Cells from '@/components/WeUI/Cells'
 import Cell from '@/components/WeUI/Cell'
 // import Toast from '@/components/WeUI/Toast'
-import { Warn } from '@/components/WeUI/Icons/icons'
+import { Warn } from '@/components/WeUI/Icon/icons'
 
 const PureUploader = ({
   title = '图片上传',
