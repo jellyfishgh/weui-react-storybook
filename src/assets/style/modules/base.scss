@@ -40,5 +40,6 @@ body,
 
 .scroll {
   -webkit-overflow-scrolling: touch;
-  overflow: auto;
+  // 会影响子元素weui-gallery不能铺满全屏
+  // overflow: auto;
 }

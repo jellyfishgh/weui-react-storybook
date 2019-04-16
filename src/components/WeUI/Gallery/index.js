@@ -42,15 +42,17 @@ const Gallery = ({
   }
   return (
     <div className={classnames('weui-gallery', className)}>
-      <span
-        ref={imgRef}
-        onMouseDown={onMouseDown}
-        onTouchStart={onMouseDown}
-        onMouseUp={onMouseUp}
-        onTouchEnd={onMouseUp}
-        className="weui-gallery__img"
-        style={{ backgroundImage: `url(${imgs[index]})` }}
-      />
+      {imgs && imgs[index] && (
+        <span
+          ref={imgRef}
+          onMouseDown={onMouseDown}
+          onTouchStart={onMouseDown}
+          onMouseUp={onMouseUp}
+          onTouchEnd={onMouseUp}
+          className="weui-gallery__img"
+          style={{ backgroundImage: `url(${imgs[index]})` }}
+        />
+      )}
       {onDelete && (
         <div className="weui-gallery__opr">
           <ALink
