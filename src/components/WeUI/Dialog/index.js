@@ -17,9 +17,11 @@ const Dialog = ({
     <Mask {...{ hide, android }}>
       <div className="weui-dialog">
         <div className="weui-dialog__hd">
-          <strong className="weui-dialog__title">{title}</strong>
+          <strong className="weui-dialog__title">
+            <p>{title}</p>
+          </strong>
         </div>
-        <div className="weui-dialog__bd">{renderEle(msg)}</div>
+        <div className="weui-dialog__bd scroll">{renderEle(msg)}</div>
         <div className="weui-dialog__ft">
           {renderDlgBtns(btns, 'weui-dialog__btn', index => {
             setHide(true)
