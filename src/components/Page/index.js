@@ -6,6 +6,9 @@ import { renderEle } from '@/utils/ele'
 
 import './page.scss'
 
+export const PAGE_ID = 'PAGE_ID'
+export const MODAL_ID = 'MODAL_ID'
+
 const Page = ({
   title,
   desc,
@@ -19,6 +22,7 @@ const Page = ({
   style
 }) => (
   <div
+    id={PAGE_ID}
     className={classnames('page scroll', className, {
       ftbt
     })}

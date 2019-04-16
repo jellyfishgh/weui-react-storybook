@@ -1,6 +1,8 @@
 import React, { Fragment } from 'react'
+import { render } from 'react-dom'
 
 import ALink from '@/components/ALink'
+import { PAGE_ID, MODAL_ID } from '@/components/Page'
 
 export const renderEle = (Ele, props = {}) =>
   typeof Ele === 'function' ? <Ele {...props} /> : Ele
@@ -33,4 +35,19 @@ export const renderList = (list, Ele) => {
     )
   }
   return <Ele {...renderLabel(list)} />
+}
+
+export const createEleOnPage = (Ele, props) => {
+  const page = document.getElementById(PAGE_ID)
+  if (page) {
+    try {
+      page.removeChild(document.getElementById(MODAL_ID))
+    } catch (err) {
+    } finally {
+      const div = document.createElement('div')
+      div.id = MODAL_ID
+      page.appendChild(div)
+      render(<Ele {...props} />, div)
+    }
+  }
 }
