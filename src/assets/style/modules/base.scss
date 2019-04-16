@@ -43,3 +43,8 @@ body,
   // 会影响子元素weui-gallery不能铺满全屏
   // overflow: auto;
 }
+
+.hide {
+  display: none;
+  opacity: 0;
+}

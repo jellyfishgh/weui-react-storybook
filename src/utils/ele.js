@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react'
 import { render } from 'react-dom'
+import classnames from 'classnames'
 
 import ALink from '@/components/ALink'
 import { PAGE_ID, MODAL_ID } from '@/components/Page'
@@ -50,4 +51,17 @@ export const createEleOnPage = (Ele, props) => {
       render(<Ele {...props} />, div)
     }
   }
+}
+
+export const renderDlgBtns = (btns, className, onClick) => {
+  if (typeof btns === 'string') btns = [btns]
+  btns = btns.map((children, index) => ({
+    className: classnames(
+      className,
+      `${className}_${btns.length - 1 === index ? 'primary' : 'default'}`
+    ),
+    children,
+    onClick: () => onClick && onClick(index)
+  }))
+  return renderList(btns, ALink)
 }

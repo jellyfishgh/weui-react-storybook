@@ -1,24 +1,6 @@
 import React from 'react'
-import classnames from 'classnames'
 
-import ALink from '@/components/ALink'
-
-import { renderList } from '@/utils/ele'
-
-const renderBtns = (btns, onClick) => {
-  if (typeof btns === 'string') btns = [btns]
-  btns = btns.map((children, index) => ({
-    className: classnames(
-      'weui-form-preview__btn',
-      `weui-form-preview__btn_${
-        btns.length === 1 || index ? 'primary' : 'default'
-      }`
-    ),
-    children,
-    onClick: () => onClick && onClick(index)
-  }))
-  return renderList(btns, ALink)
-}
+import { renderDlgBtns } from '@/utils/ele'
 
 const PreviewItem = ({ label, value }) => (
   <div className="weui-form-preview__item">
@@ -44,7 +26,9 @@ const Preview = ({ hdItems, bdItems, ftBtn, onClick }) => (
       </div>
     )}
     {ftBtn && (
-      <div className="weui-form-preview__ft">{renderBtns(ftBtn, onClick)}</div>
+      <div className="weui-form-preview__ft">
+        {renderDlgBtns(ftBtn, 'weui-form-preview__btn', onClick)}
+      </div>
     )}
   </div>
 )

@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import classnames from 'classnames'
 
+import Mask from '@/components/WeUI/Mask'
+
 import { isAndroid } from '@/utils/ua'
 
 const Actionsheet = ({
@@ -11,19 +13,15 @@ const Actionsheet = ({
   cancelTxt,
   android = isAndroid()
 }) => {
-  const [style, setStyle] = useState({})
-  const hide = () => setStyle({ display: 'none' })
+  const [hide, setHide] = useState(false)
   const cancelHandler = () => {
-    hide()
+    setHide(true)
     onCancel && onCancel()
   }
   if (!cancelTxt) cancelTxt = '取消'
   return (
-    <div
-      className={classnames('weui-mask', {
-        'weui-skin_android': android
-      })}
-      style={style}
+    <Mask
+      {...{ hide, android }}
       onClick={e => {
         if (android && e.target === e.currentTarget) {
           cancelHandler()
@@ -44,7 +42,7 @@ const Actionsheet = ({
               className="weui-actionsheet__cell"
               key={value}
               onClick={() => {
-                hide()
+                setHide(true)
                 onConfirm && onConfirm(value)
               }}
             >
@@ -60,7 +58,7 @@ const Actionsheet = ({
           </div>
         )}
       </div>
-    </div>
+    </Mask>
   )
 }
 
