@@ -8,6 +8,10 @@ import { register } from './serviceWorker'
 import '@/assets/style/weui/index.less'
 import '@/assets/style/index.scss'
 
+window.addEventListener('contextmenu', function(e) {
+  e.preventDefault()
+})
+
 ReactDOM.render(
   <Router basename={process.env.REACT_APP_NAME}>
     <App />
