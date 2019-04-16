@@ -5,3 +5,5 @@ export const step = (end, start = 0, step = 1) => {
   }
   return arr
 }
+
+export const createList = arr => arr.map(([label, value]) => ({ label, value }))
