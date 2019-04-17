@@ -3,6 +3,7 @@ import { createEleOnPage } from '@/utils/ele'
 import Actionsheet from '@/components/WeUI/Actionsheet'
 import Dialog from '@/components/WeUI/Dialog'
 import Toast from '@/components/WeUI/Toast'
+import Picker from '@/components/WeUI/Picker'
 
 export const actionsheet = ({ items, title, android, cancelTxt }) =>
   new Promise((resolve, reject) => {
@@ -72,4 +73,18 @@ export const toast = options => {
     options = { msg: options }
   }
   createEleOnPage(Toast, options)
+}
+
+export const picker = ({ items, title, value }) => {
+  if (!(value instanceof Array)) value = [value]
+  if (!(items[0] instanceof Array)) items = [items]
+  return new Promise((resolve, reject) => {
+    createEleOnPage(Picker, {
+      items,
+      value,
+      title,
+      onConfirm: resolve,
+      onCancel: reject
+    })
+  })
 }

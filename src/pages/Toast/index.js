@@ -5,7 +5,7 @@ import Button from '@/components/WeUI/Button'
 
 import { toast, loading, stopLoading } from '@/utils/reminder'
 
-const Toast = () => (
+const ToastPage = () => (
   <Page title="Toast" desc="弹出式提示" spacing ftbt>
     <Button
       onClick={() => {
@@ -29,4 +29,4 @@ const Toast = () => (
   </Page>
 )
 
-export default Toast
+export default ToastPage
