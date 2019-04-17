@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react'
-import { render } from 'react-dom'
+import { render, unmountComponentAtNode } from 'react-dom'
 import classnames from 'classnames'
 
 import ALink from '@/components/ALink'
@@ -38,17 +38,22 @@ export const renderList = (list, Ele) => {
   return <Ele {...renderLabel(list)} />
 }
 
-export const createEleOnPage = (Ele, props) => {
+export const createEleOnPage = (Ele, props, isRemove) => {
   const page = document.getElementById(PAGE_ID)
+  const modal = document.getElementById(MODAL_ID)
   if (page) {
     try {
-      page.removeChild(document.getElementById(MODAL_ID))
+      unmountComponentAtNode(modal)
+      page.removeChild(modal)
     } catch (err) {
     } finally {
+      if (isRemove) return
       const div = document.createElement('div')
       div.id = MODAL_ID
       page.appendChild(div)
-      render(<Ele {...props} />, div)
+      const ele = <Ele {...props} />
+      render(ele, div)
+      return ele
     }
   }
 }

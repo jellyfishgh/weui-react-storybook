@@ -57,14 +57,15 @@ export const confirm = options => {
   })
 }
 
-export const loading = (msg = '加载中...') => {
+export const loading = (msg = '加载中...') =>
   createEleOnPage(Toast, {
     msg,
     icon: 'loading'
   })
-}
 
-export const stopLoading = stopLoading => () => {}
+export const stopLoading = () => {
+  createEleOnPage(null, null, true)
+}
 
 export const toast = options => {
   if (typeof options === 'string') {

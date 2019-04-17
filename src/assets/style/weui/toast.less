@@ -1,0 +1,16 @@
+@import '~weui/src/style/base/fn';
+
+.weui-toast {
+  .weui-toast__content {
+    padding: 0 5px;
+
+    &:not(:first-child) {
+      .ellipsis;
+    }
+
+    &:first-child {
+      padding: 2px 5px;
+      margin: 0;
+    }
+  }
+}
