@@ -1,11 +1,6 @@
 import React, { createRef, Component } from 'react'
 import BScroll from 'better-scroll'
 
-const getStyle = index => ({
-  transform: `translate3d(0px, ${102 - index * 34}px, 0px)`,
-  transition: 'all 0.3s ease 0s'
-})
-
 class PickerGroup extends Component {
   constructor(props, context) {
     super(props, context)
@@ -23,9 +18,9 @@ class PickerGroup extends Component {
     const { index, onChange } = this.props
     this.wheel = new BScroll(this.wheelRef.current, {
       wheel: {
-        selectedIndex: index
-        // wheelWrapperClass: 'weui-picker__content',
-        // wheelItemClass: 'weui-picker__item'
+        selectedIndex: index,
+        wheelWrapperClass: 'weui-picker__content',
+        wheelItemClass: 'weui-picker__item'
       },
       probeType: 3
     })
@@ -34,11 +29,10 @@ class PickerGroup extends Component {
     })
   }
   render() {
-    const { items, index } = this.props
     return (
       <div className="weui-picker__group" ref={this.wheelRef}>
-        <div className="weui-picker__content" style={getStyle(index)}>
-          {items.map(({ label, value }) => (
+        <div className="weui-picker__content">
+          {this.props.items.map(({ label, value }) => (
             <div className="weui-picker__item" key={value}>
               {label}
             </div>
