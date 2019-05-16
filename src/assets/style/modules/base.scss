@@ -38,10 +38,14 @@ body,
   background-color: #fff;
 }
 
+.fluent-scroll {
+  -webkit-overflow-scrolling: touch;
+}
+
 .scroll {
   -webkit-overflow-scrolling: touch;
   // 会影响子元素weui-gallery不能铺满全屏
-  // overflow: auto;
+  overflow: auto;
 }
 
 .hide {

@@ -25,7 +25,7 @@ const Page = ({
 }) => (
   <div
     id={PAGE_ID}
-    className={classnames('page scroll', className, {
+    className={classnames('page fluent-scroll', className, {
       ftbt
     })}
     style={style}
