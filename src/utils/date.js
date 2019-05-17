@@ -8,7 +8,7 @@ export const getItemsBetween = (start, end, value) => {
   const [y, m] = value.map(v => parseInt(v, 10))
   const ys = step(ey + 1, sy)
   let ms = step(13, 1)
-  const mDaysMax = getDaysInMonth(new Date(y, m + 1)) + 1
+  const mDaysMax = getDaysInMonth(new Date(y, m - 1)) + 1
   let ds = step(mDaysMax, 1)
   if (y === sy) {
     ms = step(13, sm)
