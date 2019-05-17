@@ -2,6 +2,8 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { BrowserRouter as Router } from 'react-router-dom'
 
+import { version } from '../package.json'
+
 import App from './App'
 import { register } from './serviceWorker'
 
@@ -20,9 +22,11 @@ ReactDOM.render(
 )
 register()
 if (
-  process.env.NODE_ENV === 'production' &&
-  process.env.GENERATE_SOURCEMAP === 'true'
+  (process.env.NODE_ENV === 'production' &&
+    process.env.GENERATE_SOURCEMAP === 'true') ||
+  process.env.NODE_ENV === 'development'
 ) {
   const VConsole = require('vconsole')
   new VConsole()
+  console.log(`${process.env.REACT_APP_NAME}@${version}`)
 }
