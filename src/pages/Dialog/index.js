@@ -1,6 +1,7 @@
 import React from 'react'
 
 import Page from '@/components/Page'
+import Image from '@/components/Image'
 import Button from '@/components/WeUI/Button'
 
 import { alert, confirm } from '@/utils/reminder'
@@ -44,7 +45,9 @@ const DialogPage = () => (
     <Button onClick={() => showDialog(false)}>iOS Alert</Button>
     <Button onClick={() => showDialog(true)}>Android Alert</Button>
     <Button onClick={() => showDialog()}>Alert detected by UA</Button>
-    <Button onClick={() => alert(() => <h1>alert</h1>)}>Alert Rich Text</Button>
+    <Button onClick={() => alert(() => <Image name="WeUI.png" />)}>
+      Alert Rich Text
+    </Button>
     <Button onClick={alertLongTxt}>Alert Long Txt</Button>
     <Button onClick={() => showDialog(false, true)}>iOS Confirm</Button>
     <Button onClick={() => showDialog(true, true)}>Android Confirm</Button>
