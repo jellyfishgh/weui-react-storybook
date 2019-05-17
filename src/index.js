@@ -19,3 +19,10 @@ ReactDOM.render(
   document.getElementById('root')
 )
 register()
+if (
+  process.env.NODE_ENV === 'production' &&
+  process.env.GENERATE_SOURCEMAP === 'true'
+) {
+  const VConsole = require('vconsole')
+  new VConsole()
+}
