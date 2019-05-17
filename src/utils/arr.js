@@ -24,3 +24,6 @@ export const getIndex = (
   if (index === -1) index = defaultIndex
   return index
 }
+
+export const getValue = (items, selectedIndex) =>
+  items.map((group, groupIndex) => group[selectedIndex[groupIndex]].value)

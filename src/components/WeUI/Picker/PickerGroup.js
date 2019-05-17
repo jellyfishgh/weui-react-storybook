@@ -10,12 +10,22 @@ class PickerGroup extends Component {
   componentDidMount() {
     this.initWheel()
   }
+  componentDidUpdate(prevProps, prevState) {
+    if (this.props.index !== prevProps.index) {
+      this.initWheel()
+    }
+  }
   initWheel = () => {
+    const { index, onChange } = this.props
     if (this.wheel) {
-      this.wheel.refresh()
+      this.autoWheel = true
+      this.wheel.wheelTo(index)
+      window.setTimeout(() => {
+        this.wheel.refresh()
+        this.autoWheel = false
+      }, 100)
       return
     }
-    const { index, onChange } = this.props
     this.wheel = new BScroll(this.wheelRef.current, {
       wheel: {
         selectedIndex: index,
@@ -25,6 +35,7 @@ class PickerGroup extends Component {
       probeType: 3
     })
     this.wheel.on('scrollEnd', () => {
+      if (this.autoWheel) return
       onChange(this.wheel.getSelectedIndex())
     })
   }

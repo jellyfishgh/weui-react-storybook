@@ -4,6 +4,7 @@ import Actionsheet from '@/components/WeUI/Actionsheet'
 import Dialog from '@/components/WeUI/Dialog'
 import Toast from '@/components/WeUI/Toast'
 import Picker from '@/components/WeUI/Picker'
+import DatePicker from '@/components/WeUI/Picker/DatePicker'
 
 export const actionsheet = ({ items, title, android, cancelTxt }) =>
   new Promise((resolve, reject) => {
@@ -88,3 +89,14 @@ export const picker = ({ items, title, value }) => {
     })
   })
 }
+
+export const datePicker = ({ start, end, value }) =>
+  new Promise((resolve, reject) => {
+    createEleOnPage(DatePicker, {
+      start,
+      end,
+      value,
+      onConfirm: resolve,
+      onCancel: reject
+    })
+  })
