@@ -31,13 +31,13 @@ const showDialog = (android, isConfirm) => {
 const title =
   'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor aliquid suscipit assumenda quo officia optio laudantium iste? Architecto dolorem a necessitatibus ut iusto, voluptates ad accusantium vel animi incidunt qui.'
 
-const alertLongTxt = () =>
-  alert({
+const showLong = show =>
+  show({
     title,
     msg: step(10)
       .map(() => title)
       .join('\n'),
-    confirmTxt: 'alert'
+    confirmTxt: '确定'
   })
 
 const DialogPage = () => (
@@ -48,7 +48,8 @@ const DialogPage = () => (
     <Button onClick={() => alert(() => <Image name="WeUI.png" />)}>
       Alert Rich Text
     </Button>
-    <Button onClick={alertLongTxt}>Alert Long Txt</Button>
+    <Button onClick={() => showLong(alert)}>Alert Long Txt</Button>
+    <Button onClick={() => showLong(confirm)}>Confirm Long Txt</Button>
     <Button onClick={() => showDialog(false, true)}>iOS Confirm</Button>
     <Button onClick={() => showDialog(true, true)}>Android Confirm</Button>
     <Button onClick={() => showDialog(undefined, true)}>
